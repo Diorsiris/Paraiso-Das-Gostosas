@@ -1,0 +1,115 @@
+<!DOCTYPE html>  <html lang="pt">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>Paraíso das Gostosas</title>  
+  <style>  
+    body {  
+      margin: 0;  
+      font-family: Arial, sans-serif;  
+      background: #111;  
+      color: #fff;  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      padding: 20px;  
+    }  
+    h1 {  
+      color: #ffdd00;  
+      text-align: center;  
+      margin-bottom: 20px;  
+    }  
+    .chat-container {  
+      background: #222;  
+      border-radius: 15px;  
+      width: 100%;  
+      max-width: 400px;  
+      padding: 15px;  
+      display: flex;  
+      flex-direction: column;  
+      height: 500px;  
+      overflow-y: auto;  
+    }  
+    .message {  
+      padding: 10px 15px;  
+      border-radius: 20px;  
+      margin: 8px 0;  
+      max-width: 80%;  
+      word-wrap: break-word;  
+    }  
+    .bot {  
+      background: #444;  
+      align-self: flex-start;  
+    }  
+    .user {  
+      background: #ffdd00;  
+      color: #111;  
+      align-self: flex-end;  
+    }  
+    .button {  
+      margin: 5px 0;  
+      padding: 12px;  
+      background: #ffdd00;  
+      color: #111;  
+      border: none;  
+      border-radius: 20px;  
+      cursor: pointer;  
+      font-weight: bold;  
+      width: 100%;  
+    }  
+    .button:hover {  
+      background: #ffc500;  
+    }  
+    #pacotes-container {  
+      margin-top: 10px;  
+    }  
+  </style>  
+</head>  
+<body>  <h1>🔥 Paraíso das Gostosas 🔥</h1>  <div class="chat-container" id="chat">  
+  <div class="message bot">Olá 😈! Bem-vindo ao Paraíso das Gostosas.    
+Escolha seu pacote VIP abaixo 👇</div>  
+</div>  <div id="pacotes-container"></div>  <script>  
+  const chat = document.getElementById('chat');  
+  
+  let listaPacotes = [  
+    {nome: "Cláudia Costa", valor: "500 Kz"},  
+    {nome: "THAYARA", valor: "500 Kz"},  
+    {nome: "Winnie", valor: "500 Kz"},  
+    {nome: "Londrina Kelly", valor: "500 Kz"},  
+    {nome: "Eliana Cravid", valor: "500 Kz"},  
+    {nome: "Letícia", valor: "500 Kz"},  
+    {nome: "Fernanda", valor: "500 Kz"}  
+  ];  
+  
+  const pacotesDiv = document.getElementById('pacotes-container');  
+  
+  listaPacotes.forEach(p => {  
+    let btn = document.createElement('button');  
+    btn.className = 'button';  
+    btn.innerText = `${p.nome} – ${p.valor}`;  
+    btn.onclick = () => selecionarPacote(p);  
+    pacotesDiv.appendChild(btn);  
+  });  
+  
+  function addMessage(texto, tipo) {  
+    const div = document.createElement('div');  
+    div.className = `message ${tipo}`;  
+    div.innerHTML = texto;  
+    chat.appendChild(div);  
+    chat.scrollTop = chat.scrollHeight;  
+  }  
+  
+  function selecionarPacote(pacote) {  
+    addMessage(`Você escolheu: <b>${pacote.nome} – ${pacote.valor}</b>`, 'user');  
+    setTimeout(() => {  
+      addMessage(`  
+        Perfeito! ✨<br>  
+        Faça o pagamento do pacote <b>${pacote.nome} – ${pacote.valor}</b>.<br>  
+        💳 Entidade: 00930<br>  
+        📌 Referência: VIP-${Math.floor(Math.random()*9000+1000)}<br>  
+        Após o pagamento, envie o comprovativo aqui no chat. 🔓  
+      `, 'bot');  
+    }, 1000);  
+  }  
+</script>  </body>  
+</html>   
+Atualizar index.html 
