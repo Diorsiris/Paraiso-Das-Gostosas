@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paraíso VIP</title>
+    <title>Paraíso Das Gostosas</title>
     <style>
         :root {
             --rosa-choque: #ff1493; 
@@ -14,12 +14,10 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: var(--preto-puro); color: var(--texto); display: flex; justify-content: center; min-height: 100vh; overflow-x: hidden; }
+        .main-wrapper { width: 100%; max-width: 450px; background: var(--preto-puro); position: relative; }
 
-        body { background: var(--preto-puro); color: var(--texto); display: flex; justify-content: center; min-height: 100vh; }
-
-        .main-wrapper { width: 100%; max-width: 450px; background: var(--preto-puro); }
-
-        /* CABEÇALHO COM FOTO FEMININA E STATUS VERDE */
+        /* CABEÇALHO */
         .chat-header {
             background: var(--preto-card);
             padding: 15px 20px;
@@ -30,71 +28,72 @@
             top: 0;
             z-index: 1000;
         }
-
         .profile-pic-container { position: relative; width: 48px; height: 48px; }
-
-        .profile-pic {
-            width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-            border: 2px solid var(--rosa-choque);
-        }
-
+        .profile-pic { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--rosa-choque); }
         .online-status {
             width: 14px; height: 14px; background: var(--verde-wa);
             border-radius: 50%; position: absolute; bottom: 1px; right: 1px;
             border: 2px solid var(--preto-card);
             box-shadow: 0 0 8px var(--verde-wa);
         }
-
         .header-info { margin-left: 15px; }
         .header-info h2 { font-size: 1.05rem; color: #fff; }
         .header-info span { font-size: 0.8rem; color: var(--verde-wa); font-weight: bold; }
 
-        /* CHAT */
-        .chat-box {
-            padding: 20px 15px; height: 350px; overflow-y: auto;
-            display: flex; flex-direction: column; gap: 12px;
+        /* CHAT E ANIMAÇÕES */
+        .chat-box { padding: 20px 15px; height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+        .message { max-width: 85%; padding: 14px; border-radius: 20px; font-size: 0.95rem; animation: slideIn 0.4s ease-out; line-height: 1.4; }
+        
+        @keyframes slideIn { 
+            from { opacity: 0; transform: translateX(-20px); } 
+            to { opacity: 1; transform: translateX(0); } 
         }
 
-        .message { max-width: 80%; padding: 14px; border-radius: 20px; font-size: 0.95rem; }
         .bot { background: #1a1a1a; align-self: flex-start; border: 1px solid #333; }
         .user { background: var(--rosa-choque); align-self: flex-end; color: #fff; font-weight: bold; }
 
         /* BOTÕES DE PACIENTES */
         .grid-pacotes { padding: 15px; display: grid; gap: 10px; }
-
         .button-pacote {
             width: 100%; padding: 16px; background: transparent;
             border: 1px solid var(--rosa-choque); border-radius: 15px;
-            color: #fff; display: flex; justify-content: space-between;
-            cursor: pointer; transition: 0.3s;
+            color: #fff; display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: all 0.3s ease;
         }
-
-        .button-pacote:hover { background: var(--rosa-choque); }
+        .button-pacote:hover { 
+            background: rgba(255, 20, 147, 0.1); 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
         .price-tag { color: var(--rosa-choque); font-weight: bold; }
-        .button-pacote:hover .price-tag { color: #fff; }
 
-        /* ÁREA DE PAGAMENTO */
+        /* BOTÃO DE VÍDEO NO CHAT */
+        .btn-video-preview {
+            margin-top: 10px; width: 100%; padding: 12px;
+            background: transparent; border: 1px solid var(--texto);
+            color: #fff; border-radius: 10px; cursor: pointer;
+            font-weight: bold; font-size: 0.85rem; transition: 0.3s;
+        }
+        .btn-video-preview:hover { background: #fff; color: #000; }
+
+        /* PAGAMENTO */
         #payment-area {
             display: none; padding: 25px; background: var(--preto-card);
             margin: 15px; border-radius: 25px; border: 1px solid var(--rosa-choque);
-            text-align: center; animation: fadeIn 0.5s;
+            text-align: center; animation: fadeIn 0.6s ease;
         }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .express-card { background: #000; padding: 20px; border-radius: 15px; margin: 15px 0; border: 2px dashed var(--rosa-choque); }
+        .num { font-size: 1.6rem; color: var(--rosa-choque); display: block; margin: 5px 0; font-weight: 800; letter-spacing: 1px; }
 
-        .express-card { 
-            background: #000; padding: 20px; border-radius: 15px; 
-            margin: 20px 0; border: 2px dashed var(--rosa-choque); 
-        }
-
-        .num { font-size: 1.6rem; color: var(--rosa-choque); display: block; margin: 10px 0; font-weight: 800; }
-
-        /* BOTÃO DO WHATSAPP VERDE */
         .btn-wa {
             display: block; background: var(--verde-wa); color: #fff;
             text-decoration: none; padding: 18px; border-radius: 35px;
-            font-weight: bold; margin-top: 15px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            font-weight: bold; margin-top: 10px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
         }
+        .btn-wa:hover { transform: scale(1.02); }
     </style>
 </head>
 <body>
@@ -118,18 +117,30 @@
     <div class="grid-pacotes" id="pacotes-container"></div>
 
     <div id="payment-area">
-        <h3 style="color:var(--rosa-choque);">💳 PAGAMENTO EXPRESS</h3>
+        <h3 style="color:var(--rosa-choque); margin-bottom: 5px;">💳 PAGAMENTO EXPRESS</h3>
+        <p style="font-size: 0.8rem; color: #888;">Envie o valor e anexe o comprovativo abaixo</p>
+        
         <div class="express-card">
             <b class="num">947976177</b>
-            <span style="color:#888; font-size: 0.8rem;">Titular: Paraíso das Gostosas</span>
+            <span style="color:#aaa; font-size: 0.8rem;">Titular: Paraíso das Gostosas</span>
         </div>
-        <p id="msg-final" style="font-size: 0.9rem; margin-bottom: 15px;"></p>
-        <a id="whatsappLink" href="#" target="_blank" class="btn-wa">💬 ENVIAR COMPROVATIVO NO WHATSAPP</a>
+        
+        <a id="whatsappLink" href="#" target="_blank" class="btn-wa">✅ JÁ PAGUEI, ENVIAR COMPROVATIVO</a>
     </div>
 </div>
 
 <script>
-    const pacotes = ["Cláudia Costa", "THAYARA", "Winnie", "Londrina Kelly", "Eliana Cravid", "Letícia", "Fernanda"];
+    // LISTA DE MODELOS (Troca os links de foto e vídeo pelos teus)
+    const pacotes = [
+        { nome: "Cláudia Costa", foto: "LINK_DA_FOTO.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "THAYARA", foto: "LINK_DA_FOTO.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Winnie", foto: "LINK_DA_FOTO.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Londrina Kelly", foto: "LINK_DA_FOTO.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Eliana Cravid", foto: "LINK_DA_FOTO.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Letícia", foto: "LINK_DA_FOTO.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Fernanda", foto: "LINK_DA_FOTO.jpg", video: "LINK_DO_VIDEO.mp4" }
+    ];
+
     const chat = document.getElementById("chat");
     const container = document.getElementById("pacotes-container");
 
@@ -139,25 +150,66 @@
         div.innerHTML = text;
         chat.appendChild(div);
         chat.scrollTop = chat.scrollHeight;
+        return div;
     }
 
-    function escolher(nome){
-        addMessage(`Quero o pacote da <b>${nome}</b>! 🔥`, "user");
+    function escolher(nome, fotoUrl, videoUrl){
+        addMessage(`Quero ver o VIP da <b>${nome}</b>! 🔥`, "user");
+
         setTimeout(()=>{
-            addMessage(`Excelente escolha! Efetue o pagamento de <b>500 Kz</b> via Express e envie o comprovativo.`, "bot");
-            const numero = "244956649781";
-            const textoWA = `Olá! Fiz o pagamento de 500 Kz do pacote: *${nome}*`;
-            document.getElementById("whatsappLink").href = `https://wa.me/${numero}?text=${encodeURIComponent(textoWA)}`;
-            document.getElementById("msg-final").innerHTML = `📌 Pacote selecionado: <b>${nome}</b>`;
-            document.getElementById("payment-area").style.display = "block";
-        }, 600);
+            const msgBot = addMessage(`Excelente escolha! Veja uma prévia da <b>${nome}</b> abaixo:`, "bot");
+            
+            // Container de Media
+            const mediaDiv = document.createElement("div");
+            mediaDiv.style.marginTop = "10px";
+
+            // Foto de Prévia
+            const img = document.createElement("img");
+            img.src = fotoUrl;
+            img.style.width = "100%";
+            img.style.borderRadius = "12px";
+            img.style.border = "1px solid var(--rosa-choque)";
+            mediaDiv.appendChild(img);
+
+            // Botão Ver Vídeo
+            const btnVid = document.createElement("button");
+            btnVid.className = "btn-video-preview";
+            btnVid.innerHTML = "🎥 VER VÍDEO (PRÉVIA)";
+            btnVid.onclick = () => {
+                btnVid.style.display = "none";
+                const video = document.createElement("video");
+                video.src = videoUrl;
+                video.controls = true;
+                video.autoplay = true;
+                video.style.width = "100%";
+                video.style.borderRadius = "10px";
+                video.style.marginTop = "10px";
+                mediaDiv.appendChild(video);
+            };
+            mediaDiv.appendChild(btnVid);
+            msgBot.appendChild(mediaDiv);
+            chat.scrollTop = chat.scrollHeight;
+
+            setTimeout(()=>{
+                addMessage(`Gostou? Para libertar o acesso <b>COMPLETO</b>, pague 500 Kz via Express.`, "bot");
+                
+                const numero = "244957625206";
+                const textoWA = `Olá! Vi a prévia da *${nome}* e quero o acesso VIP agora.`;
+                document.getElementById("whatsappLink").href = `https://wa.me/${numero}?text=${encodeURIComponent(textoWA)}`;
+                document.getElementById("payment-area").style.display = "block";
+                
+                setTimeout(() => {
+                    document.getElementById("payment-area").scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }, 2000);
+        }, 800);
     }
 
     pacotes.forEach(p => {
         const btn = document.createElement("button");
         btn.className = "button-pacote";
-        btn.innerHTML = `<span>${p}</span> <span class="price-tag">500 Kz</span>`;
-        btn.onclick = () => escolher(p);
+        btn.innerHTML = `<span>${p.nome}</span> <span class="price-tag">500 Kz</span>`;
+        btn.onclick = () => escolher(p.nome, p.foto, p.video);
         container.appendChild(btn);
     });
 </script>
