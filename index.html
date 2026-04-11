@@ -3,167 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paraíso das Gostosas</title>
+    <title>Paraíso das Gostosas - VIP</title>
     <style>
         :root {
             --rosa-choque: #ff0055;
             --preto-fundo: #0a0a0a;
             --preto-card: #141414;
-            --texto-claro: #ffffff;
             --ouro: #ffd700;
+            --verde-online: #25d366;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        body {
-            background: var(--preto-fundo);
-            color: white;
+        body { background: var(--preto-fundo); color: white; display: flex; justify-content: center; min-height: 100vh; }
+
+        .main-wrapper { width: 100%; max-width: 450px; background: #000; position: relative; }
+
+        /* CABEÇALHO DO CHAT (ONLINE STATUS) */
+        .chat-header {
+            background: var(--preto-card);
+            padding: 15px;
             display: flex;
-            justify-content: center;
-            min-height: 100vh;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .main-wrapper {
+        .profile-pic-container { position: relative; width: 45px; height: 45px; }
+
+        .profile-pic {
             width: 100%;
-            max-width: 450px;
-            padding: 20px;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--rosa-choque);
         }
+
+        .online-status {
+            width: 12px;
+            height: 12px;
+            background: var(--verde-online);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            border: 2px solid var(--preto-card);
+        }
+
+        .header-info { margin-left: 12px; }
+        .header-info h2 { font-size: 1rem; color: white; }
+        .header-info span { font-size: 0.75rem; color: var(--verde-online); }
 
         /* LOGOTIPO */
-        .logo-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 15px;
+        .logo-container { text-align: center; padding: 20px; }
+        .logo-img { 
+            width: 100%; 
+            max-width: 280px; 
+            border-radius: 15px; 
             box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
         }
 
-        h1 {
-            color: var(--rosa-choque);
-            text-align: center;
-            font-size: 1.5rem;
-            margin: 15px 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
-        }
-
-        /* CHAT */
-        .chat-container {
-            background: var(--preto-card);
+        /* ÁREA DE MENSAGENS */
+        .chat-box {
             padding: 15px;
-            border-radius: 20px;
-            height: 250px;
+            height: 350px;
             overflow-y: auto;
-            border: 1px solid #222;
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
-        }
-
-        .message {
-            margin: 8px 0;
-            padding: 12px 16px;
-            border-radius: 15px;
-            max-width: 85%;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .bot {
-            background: #2a2a2a;
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-        }
-
-        .user {
-            background: var(--rosa-choque);
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-            font-weight: bold;
-        }
-
-        /* BOTÕES DE PACOTES */
-        .grid-pacotes {
-            display: grid;
-            grid-template-columns: 1fr;
             gap: 10px;
         }
 
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .bot { background: #262626; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .user { background: var(--rosa-choque); align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
+
+        /* LISTA DE PACIENTES */
+        .grid-pacotes { padding: 15px; display: grid; gap: 8px; }
+
         .button-pacote {
             width: 100%;
-            padding: 14px;
-            background: transparent;
-            border: 1px solid var(--rosa-choque);
-            border-radius: 30px;
+            padding: 14px 20px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
             color: white;
-            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             cursor: pointer;
             transition: 0.3s;
-            text-align: center;
         }
 
-        .button-pacote:hover {
-            background: var(--rosa-choque);
-            box-shadow: 0 0 15px var(--rosa-choque);
-        }
+        .button-pacote:hover { border-color: var(--rosa-choque); background: rgba(255, 0, 85, 0.05); }
+        .price-tag { color: var(--ouro); font-weight: bold; font-size: 0.9rem; }
 
-        /* ÁREA DE PAGAMENTO */
-        #area-pagamento {
+        /* PAGAMENTO */
+        #payment-area {
             display: none;
-            background: #1a1a1a;
             padding: 20px;
+            background: var(--preto-card);
+            margin: 15px;
             border-radius: 20px;
-            margin-top: 20px;
             border: 1px solid #333;
             text-align: center;
-            animation: fadeIn 0.5s ease;
+            animation: slideUp 0.4s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .express-info {
-            background: #000;
-            padding: 15px;
-            border-radius: 12px;
-            margin: 15px 0;
-            border: 1px dashed var(--ouro);
-        }
+        .express-card { background: #000; padding: 15px; border-radius: 12px; margin: 15px 0; border: 1px dashed var(--ouro); }
+        .num { font-size: 1.4rem; color: var(--ouro); display: block; margin: 5px 0; letter-spacing: 1px; }
 
-        .numero-destaque {
-            font-size: 1.4rem;
-            color: var(--ouro);
+        .btn-wa {
             display: block;
-            margin: 5px 0;
-        }
-
-        .btn-whatsapp {
-            display: block;
-            width: 100%;
-            padding: 16px;
             background: #25d366;
             color: white;
             text-decoration: none;
+            padding: 16px;
             border-radius: 30px;
             font-weight: bold;
             margin-top: 10px;
-            transition: 0.3s;
-        }
-
-        .btn-whatsapp:hover {
-            background: #128c7e;
         }
 
     </style>
@@ -171,30 +140,36 @@
 <body>
 
 <div class="main-wrapper">
-    <div class="logo-container">
-        <img src="https://i.ibb.co/LDPshG7H/5c0cb8de-4160-4236-8ecd-a4a42a708d58.jpg" alt="Logo Paraíso" class="logo-img">
+    <div class="chat-header">
+        <div class="profile-pic-container">
+            <img src="https://i.ibb.co/LDPshG7H/5c0cb8de-4160-4236-8ecd-a4a42a708d58.jpg" class="profile-pic" alt="Atendente">
+            <div class="online-status"></div>
+        </div>
+        <div class="header-info">
+            <h2>Atendente VIP</h2>
+            <span>online agora</span>
+        </div>
     </div>
 
-    <h1>🔥 Área VIP 🔥</h1>
+    <div class="logo-container">
+        <img src="https://i.ibb.co/LDPshG7H/5c0cb8de-4160-4236-8ecd-a4a42a708d58.jpg" class="logo-img" alt="Logo">
+    </div>
 
-    <div class="chat-container" id="chat">
-        <div class="message bot">Bem-vindo ao Paraíso! 🔥<br>Escolha uma das nossas beldades abaixo para ver o conteúdo VIP:</div>
+    <div class="chat-box" id="chat">
+        <div class="message bot">Olá! Bem-vindo ao Paraíso. 🔥<br><br>Qual conteúdo você deseja libertar hoje por apenas <b>500 Kz</b>?</div>
     </div>
 
     <div class="grid-pacotes" id="pacotes-container"></div>
 
-    <div id="area-pagamento">
+    <div id="payment-area">
         <h3 style="color:var(--rosa-choque);">💳 Pagamento via Express</h3>
-        
-        <div class="express-info">
-            <p>Envie o valor correspondente para:</p>
-            <b class="numero-destaque">947.976.177</b>
-            <small>Titular: Paraíso das Gostosas</small>
+        <div class="express-card">
+            <p style="font-size: 0.8rem; color: #bbb;">Número para transferência:</p>
+            <b class="num">947976177</b>
+            <small style="color: #888;">Titular: Paraíso das Gostosas</small>
         </div>
-
-        <p style="font-size: 0.9rem; margin-bottom: 15px;">📌 Após o pagamento, clique no botão abaixo para enviar o comprovativo.</p>
-
-        <a id="whatsappLink" href="#" target="_blank" class="btn-whatsapp">
+        <p id="msg-final" style="font-size: 0.85rem; color: #ccc; margin-bottom: 15px;"></p>
+        <a id="whatsappLink" href="#" target="_blank" class="btn-wa">
             💬 Enviar Comprovativo no WhatsApp
         </a>
     </div>
@@ -202,18 +177,14 @@
 
 <script>
     const pacotes = [
-        "Cláudia Costa",
-        "THAYARA",
-        "Winnie",
-        "Londrina Kelly",
-        "Eliana Cravid",
-        "Letícia",
-        "Fernanda"
+        "Cláudia Costa", "THAYARA", "Winnie", 
+        "Londrina Kelly", "Eliana Cravid", 
+        "Letícia", "Fernanda"
     ];
 
     const chat = document.getElementById("chat");
     const container = document.getElementById("pacotes-container");
-    const areaPagamento = document.getElementById("area-pagamento");
+    const paymentArea = document.getElementById("payment-area");
 
     function addMessage(text, type){
         const div = document.createElement("div");
@@ -224,33 +195,35 @@
     }
 
     function escolher(nome){
-        // Limpar mensagens anteriores de escolha se quiser um chat limpo
-        addMessage("Eu quero o pacote da <b>" + nome + "</b> 🔥", "user");
+        addMessage(`Quero o pacote da <b>${nome}</b>! 🔥`, "user");
 
         setTimeout(()=>{
-            addMessage("Excelente escolha! A <b>" + nome + "</b> é incrível. 🔥", "bot");
+            addMessage(`Ótima escolha! O conteúdo da <b>${nome}</b> é imperdível.`, "bot");
+            
             setTimeout(()=>{
-                addMessage("Para libertar o acesso, efetue o pagamento via Express e envie o comprovativo abaixo 👇", "bot");
-                configurarWhatsApp(nome);
-                areaPagamento.style.display = "block";
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                addMessage("Efetue o pagamento de <b>500 Kz</b> via Express e envie o comprovativo abaixo para eu te mandar o link.", "bot");
+                
+                // Configuração do WhatsApp
+                const numero = "244956649781";
+                const textoWA = `Olá 👋\n\nFiz o pagamento de 500 Kz do pacote: *${nome}*\n\nSegue o comprovativo para libertar o meu acesso.`;
+                document.getElementById("whatsappLink").href = `https://wa.me/${numero}?text=${encodeURIComponent(textoWA)}`;
+                
+                document.getElementById("msg-final").innerText = `📌 Você selecionou o pacote de ${nome}.`;
+                paymentArea.style.display = "block";
+                
+                // Scroll automático para o pagamento
+                setTimeout(() => {
+                    paymentArea.scrollIntoView({ behavior: 'smooth' });
+                }, 300);
             }, 800);
         }, 600);
     }
 
-    function configurarWhatsApp(nomePacote){
-        const numero = "244957625206";
-        const mensagem = `Olá 👋\n\nFiz o pagamento do pacote: *${nomePacote}*\n\nEstou a enviar o comprovativo agora para receber o acesso.`;
-        const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-        document.getElementById("whatsappLink").href = url;
-    }
-
-    // Gerar botões
-    pacotes.forEach(p=>{
+    pacotes.forEach(p => {
         const btn = document.createElement("button");
         btn.className = "button-pacote";
-        btn.innerText = p;
-        btn.onclick = ()=>escolher(p);
+        btn.innerHTML = `<span>${p}</span> <span class="price-tag">500 Kz</span>`;
+        btn.onclick = () => escolher(p);
         container.appendChild(btn);
     });
 </script>
