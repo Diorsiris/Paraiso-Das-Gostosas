@@ -2,195 +2,258 @@
 <html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
-    <!-- Meta tag crucial para responsividade total -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paraíso das Gostosas</title>
     <style>
-        /* Cores principais */
         :root {
-            --rosa-choque: #ff0055; /* Rosa forte pendendo para o vermelho */
+            --rosa-choque: #ff0055;
             --preto-fundo: #0a0a0a;
-            --preto-card: #1a1a1a;
+            --preto-card: #141414;
             --texto-claro: #ffffff;
+            --ouro: #ffd700;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--preto-fundo);
-            color: var(--texto-claro);
+            background: var(--preto-fundo);
+            color: white;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             min-height: 100vh;
+        }
+
+        .main-wrapper {
             width: 100%;
-            align-items: center;
+            max-width: 450px;
+            padding: 20px;
+        }
+
+        /* LOGOTIPO */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
         }
 
         h1 {
             color: var(--rosa-choque);
             text-align: center;
-            font-size: 1.4rem;
-            margin: 20px 0;
+            font-size: 1.5rem;
+            margin: 15px 0;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
         }
 
-        /* Container principal que ocupa a largura total no mobile */
-        .main-wrapper {
-            width: 100%;
-            max-width: 500px; /* No PC não fica gigante, no mobile ocupa tudo */
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            padding: 10px;
-        }
-
-        /* Área do Chat */
+        /* CHAT */
         .chat-container {
             background: var(--preto-card);
-            border-radius: 15px;
-            width: 100%;
-            height: 350px; /* Altura fixa para o chat */
             padding: 15px;
+            border-radius: 20px;
+            height: 250px;
+            overflow-y: auto;
+            border: 1px solid #222;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
-            border: 1px solid #333;
             margin-bottom: 20px;
         }
 
         .message {
-            padding: 12px 16px;
-            border-radius: 18px;
             margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 15px;
             max-width: 85%;
             font-size: 0.95rem;
             line-height: 1.4;
-            word-wrap: break-word;
         }
 
         .bot {
-            background: #333;
-            color: #eee;
+            background: #2a2a2a;
             align-self: flex-start;
             border-bottom-left-radius: 2px;
         }
 
         .user {
             background: var(--rosa-choque);
-            color: #fff;
             align-self: flex-end;
             border-bottom-right-radius: 2px;
-        }
-
-        /* Container de botões */
-        #pacotes-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-            padding-bottom: 20px;
-        }
-
-        .button {
-            width: 100%;
-            padding: 15px;
-            background: var(--rosa-choque);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
             font-weight: bold;
-            font-size: 1rem;
-            transition: transform 0.1s, brightness 0.2s;
-            box-shadow: 0 4px 10px rgba(255, 0, 85, 0.2);
         }
 
-        .button:active {
-            transform: scale(0.98);
-            brightness: 0.8;
+        /* BOTÕES DE PACOTES */
+        .grid-pacotes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
 
-        /* Customizar barra de rolagem */
-        .chat-container::-webkit-scrollbar {
-            width: 5px;
+        .button-pacote {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid var(--rosa-choque);
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
         }
-        .chat-container::-webkit-scrollbar-thumb {
-            background: #444;
-            border-radius: 10px;
+
+        .button-pacote:hover {
+            background: var(--rosa-choque);
+            box-shadow: 0 0 15px var(--rosa-choque);
         }
+
+        /* ÁREA DE PAGAMENTO */
+        #area-pagamento {
+            display: none;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+            border: 1px solid #333;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .express-info {
+            background: #000;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px dashed var(--ouro);
+        }
+
+        .numero-destaque {
+            font-size: 1.4rem;
+            color: var(--ouro);
+            display: block;
+            margin: 5px 0;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128c7e;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="main-wrapper">
-        <h1>🔥 Paraíso das Gostosas 🔥</h1>
-
-        <div class="chat-container" id="chat">
-            <div class="message bot">
-                Olá 😈! Bem-vindo ao Paraíso das Gostosas.<br>
-                Escolha seu pacote VIP abaixo 👇
-            </div>
-        </div>
-
-        <div id="pacotes-container"></div>
+<div class="main-wrapper">
+    <div class="logo-container">
+        <img src="https://i.ibb.co/LDPshG7H/5c0cb8de-4160-4236-8ecd-a4a42a708d58.jpg" alt="Logo Paraíso" class="logo-img">
     </div>
 
-    <script>
-        const chat = document.getElementById('chat');
-        const pacotesDiv = document.getElementById('pacotes-container');
+    <h1>🔥 Área VIP 🔥</h1>
 
-        const listaPacotes = [
-            {nome: "Cláudia Costa", valor: "500 Kz"},
-            {nome: "THAYARA", valor: "500 Kz"},
-            {nome: "Winnie", valor: "500 Kz"},
-            {nome: "Londrina Kelly", valor: "500 Kz"},
-            {nome: "Eliana Cravid", valor: "500 Kz"},
-            {nome: "Letícia", valor: "500 Kz"},
-            {nome: "Fernanda", valor: "500 Kz"}
-        ];
+    <div class="chat-container" id="chat">
+        <div class="message bot">Bem-vindo ao Paraíso! 🔥<br>Escolha uma das nossas beldades abaixo para ver o conteúdo VIP:</div>
+    </div>
 
-        listaPacotes.forEach(p => {
-            let btn = document.createElement('button');
-            btn.className = 'button';
-            btn.innerText = `${p.nome} – ${p.valor}`;
-            btn.onclick = () => selecionarPacote(p);
-            pacotesDiv.appendChild(btn);
-        });
+    <div class="grid-pacotes" id="pacotes-container"></div>
 
-        function addMessage(texto, tipo) {
-            const div = document.createElement('div');
-            div.className = `message ${tipo}`;
-            div.innerHTML = texto;
-            chat.appendChild(div);
-            
-            // Scroll automático para a última mensagem
-            chat.scrollTo({
-                top: chat.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
+    <div id="area-pagamento">
+        <h3 style="color:var(--rosa-choque);">💳 Pagamento via Express</h3>
+        
+        <div class="express-info">
+            <p>Envie o valor correspondente para:</p>
+            <b class="numero-destaque">947.976.177</b>
+            <small>Titular: Paraíso das Gostosas</small>
+        </div>
 
-        function selecionarPacote(pacote) {
-            addMessage(`Você escolheu: <b>${pacote.nome} – ${pacote.valor}</b>`, 'user');
-            
-            setTimeout(() => {
-                const ref = "VIP-" + Math.floor(Math.random() * 9000 + 1000);
-                addMessage(`
-                    Perfeito! ✨<br>
-                    Faça o pagamento do pacote <b>${pacote.nome}</b>.<br><br>
-                    💳 Entidade: <b>00930</b><br>
-                    📌 Referência: <b>947976177</b><br><br>
-                    Após o pagamento, envie o comprovativo aqui no chat. 🔒
-                `, 'bot');
-            }, 1000);
-        }
-    </script>
-    <script src="//code.tidio.co/fversnqb6xwtqmiixththt1kyieevbkg.js" async></script>
+        <p style="font-size: 0.9rem; margin-bottom: 15px;">📌 Após o pagamento, clique no botão abaixo para enviar o comprovativo.</p>
+
+        <a id="whatsappLink" href="#" target="_blank" class="btn-whatsapp">
+            💬 Enviar Comprovativo no WhatsApp
+        </a>
+    </div>
+</div>
+
+<script>
+    const pacotes = [
+        "Cláudia Costa",
+        "THAYARA",
+        "Winnie",
+        "Londrina Kelly",
+        "Eliana Cravid",
+        "Letícia",
+        "Fernanda"
+    ];
+
+    const chat = document.getElementById("chat");
+    const container = document.getElementById("pacotes-container");
+    const areaPagamento = document.getElementById("area-pagamento");
+
+    function addMessage(text, type){
+        const div = document.createElement("div");
+        div.className = "message " + type;
+        div.innerHTML = text;
+        chat.appendChild(div);
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+    function escolher(nome){
+        // Limpar mensagens anteriores de escolha se quiser um chat limpo
+        addMessage("Eu quero o pacote da <b>" + nome + "</b> 🔥", "user");
+
+        setTimeout(()=>{
+            addMessage("Excelente escolha! A <b>" + nome + "</b> é incrível. 🔥", "bot");
+            setTimeout(()=>{
+                addMessage("Para libertar o acesso, efetue o pagamento via Express e envie o comprovativo abaixo 👇", "bot");
+                configurarWhatsApp(nome);
+                areaPagamento.style.display = "block";
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }, 800);
+        }, 600);
+    }
+
+    function configurarWhatsApp(nomePacote){
+        const numero = "244957625206";
+        const mensagem = `Olá 👋\n\nFiz o pagamento do pacote: *${nomePacote}*\n\nEstou a enviar o comprovativo agora para receber o acesso.`;
+        const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+        document.getElementById("whatsappLink").href = url;
+    }
+
+    // Gerar botões
+    pacotes.forEach(p=>{
+        const btn = document.createElement("button");
+        btn.className = "button-pacote";
+        btn.innerText = p;
+        btn.onclick = ()=>escolher(p);
+        container.appendChild(btn);
+    });
+</script>
+
 </body>
 </html>
