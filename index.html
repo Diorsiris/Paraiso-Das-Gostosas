@@ -102,7 +102,6 @@
     <div class="chat-header">
         <div class="profile-pic-container">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsKKzKyZJOTL21suJdy6ETPhMZnDzLMJ9s3pckUO4EFzbR3lDgnVpI8Gm9n2jtoEVFgE_XdEUiMIJMdeKnrBcUJRWxGGQ7oPnAk7qgq5bVRAHpEw-pLOmo6EDVBqw6t2yFHI3C9srXfh8xryXaeaAOvx243WMh7_UOJkmJ-wm5cqfI6MFD8JcVdXfUN4I/s1248/7WxwG8vX.jpeg" class="profile-pic">
-                
             <div class="online-status"></div>
         </div>
         <div class="header-info">
@@ -112,7 +111,7 @@
     </div>
 
     <div class="chat-box" id="chat">
-        <div class="message bot">Olá! Bem-vindo ao Paraíso. 🔥<br><br>Qual pasta você deseja ter agora por apenas <b>500 Kz</b>?</div>
+        <div class="message bot">Olá! Bem-vindo ao Paraíso. 🔥<br><br>Qual conteúdo você deseja libertar hoje por apenas <b>500 Kz</b>?</div>
     </div>
 
     <div class="grid-pacotes" id="pacotes-container"></div>
@@ -126,21 +125,20 @@
             <span style="color:#aaa; font-size: 0.8rem;">Titular: Paraíso das Gostosas</span>
         </div>
         
-        <a id="whatsappLink" href="#" target="_blank" class="btn-wa">✅ APERTA AQUI PARA MANDAR O COMPROVATIVO </a>
+        <a id="whatsappLink" href="#" target="_blank" class="btn-wa">✅   ENVIAR COMPROVATIVO AQUI NO WHATSAPP</a>
     </div>
 </div>
 
 <script>
     // LISTA DE MODELOS (Troca os links de foto e vídeo pelos teus)
     const pacotes = [
-        { nome: "Cláudia Costa", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjv8S0Ao45XpaxPvq9B_IuNUV2wx0ZJfnExXoauvgaWl6LHG53oaJEGj85rq7tZg05P2b_EGFC07Wxwyhz7YoR3fUv8gDwkOGIFKkJRlhtEdjPYekg03NPU7NIUm09sPqKPF3-FQ3DYZFZrAv3S3wWJCQ-A07a4QMGAWRzyuxCcC7ZH8umTCJT93EoazK0/s1235/A9ocyMeF.jpeg", video: "ttps://drive.google.com/uc?export=download&id=1QhPadc5DmpdRP2MbhykCU_Isswmsm-8q" },
-        { nome: "THAYARA", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9Uz_bKp0S001ld0Al2SbT5addRnAKs7sfJZhZ-8MTmrLTn7CHjEfCtEO_lIsVkEPGyu9X0s__ZuLu5whMV-Gv_ZrqqH6Ab7-DTqnuM-ISuG_7bjeJzL6lRtMGensyHT6a6lABeX0NVTMTMVJScKpouoc2xuIhgNrOOX7igQ_BVOpEOYN_o1mzrEVxqlk/s516/images%20(3).jpeg", video: "https://drive.google.com/uc?export=download&id=1dSSONIvQ65WnkKIOeA6ucKyG8zh47Zti" },
-        { nome: "Winnie", foto :  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZEr6kXBRh_33HFziFaHmymHuri_Kc53hJmvp3yileX6V8vxQl534vEq_0MnnIPAkfxIHigwrvyyThRLHDWFHN_fMT8yPeffRvkBQCyswxrpdEQcdVU9GCPsxbvg4Pe5AhDjEBXoYxOd8juphERm_7dF5O_0Qv3Th_VUgFAlHl4KJy4nJbD0IadOnj7pg/s842/8daIebeC.jpeg", video: "https://drive.google.com/uc?export=download&id=1XYEILj9e493e0oxv1TPsPqgQd_PJANEV" },
-        { nome: "Londrina Kelly", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkzWv4nXOr3vOIxrugZkzvaSGF3VeZoviqRuUN9hxGGmzYHLKsgqyg1qsY9VaV5AGjAI_6NZ761AO3_NUJar4cbPwBbB0UkAH0gobTXzRTMFC6V0NPU0Ffx7h9-RHSqEVMnjpwVWYJ2wD1PdTD-K89KtJQQjlQD6WzzJKpDDiwyAZPxS9FMF99DDjScvE/s1500/u2YatzoH.jpeg
-", video: "https://drive.google.com/uc?export=download&id=1lsQhQ3RILSKZVWo24l9g53XPBifz4lcx" },
-        { nome: "Eliana Cravid", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilY6MLUkb9cMxJPgQ_t0qMHpj7cEBBtmY_G49zunQLFCG1jtoLl17vr8HLzWwnrbQug9KfSanp-KktHUhpBFrnMLZwNKMN8eIx2GAt1_fP24RXljtetqDCgfA6hJelzii5oQvUZRBX_SFZKfRbD7xGgO0i8ZMR7qtG1DA0DJFWv02va69GsL0WRDm98q4/s960/1775939197667.jpg", video: "https://drive.google.com/uc?export=download&id=1fwqFAQoYVwovXGl5R5y0SMMQfiK8f9QF" },
-        { nome: "Letícia", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-l8wr-uBW7Yeto8HiJ5BpxEuzpgweGVL9oUqn943_KbtnYiqjyj2vpOq6hodAJE1Ms_rKLE4I23XA3YumSbx2E4AuUSJLG9fVFcxrRBF8dAQfXoWQGtnymhpvAJAhhWnkldgn8nCmrDq60h6ihtV6Jr2qDd0WxEEapTrQGOLj0YO4VfLx38Rdr-oCMlc/s1600/IMG-20260408-WA0012.jpg", video: "https://drive.google.com/uc?export=download&id=1OotVLL_qmvlPU2RkbX9zXGqzATApfpsg" },
-        { nome: "Fernanda", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgh-f2YClKxRwoH47yx9ru6KR5t8ssGP80sSz2A6mEfMyXnWXYnzPhNXYdbfP9L8bVm1R9NMmu4IzCLq5BlMWbCC0vf-ivnQSGdwBXRcSaHcBhFwAzw0tHrFcIr6hU-lQDj8gcX7pvRAbIoVT7rsBB52IoQqa_COF5NxckBDWXUwAa5k82BQ3rr9T9rXmY/s1500/IMG-20260407-WA0032.jpg", video: "https://drive.google.com/uc?export=download&id=1ZIKrVfUuWQShM_cADgjXa21-tEhL0CCN" }
+        { nome: "Cláudia Costa", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjv8S0Ao45XpaxPvq9B_IuNUV2wx0ZJfnExXoauvgaWl6LHG53oaJEGj85rq7tZg05P2b_EGFC07Wxwyhz7YoR3fUv8gDwkOGIFKkJRlhtEdjPYekg03NPU7NIUm09sPqKPF3-FQ3DYZFZrAv3S3wWJCQ-A07a4QMGAWRzyuxCcC7ZH8umTCJT93EoazK0/s1235/A9ocyMeF.jpeg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "THAYARA", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9Uz_bKp0S001ld0Al2SbT5addRnAKs7sfJZhZ-8MTmrLTn7CHjEfCtEO_lIsVkEPGyu9X0s__ZuLu5whMV-Gv_ZrqqH6Ab7-DTqnuM-ISuG_7bjeJzL6lRtMGensyHT6a6lABeX0NVTMTMVJScKpouoc2xuIhgNrOOX7igQ_BVOpEOYN_o1mzrEVxqlk/s516/images%20(3).jpeg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Winnie", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZEr6kXBRh_33HFziFaHmymHuri_Kc53hJmvp3yileX6V8vxQl534vEq_0MnnIPAkfxIHigwrvyyThRLHDWFHN_fMT8yPeffRvkBQCyswxrpdEQcdVU9GCPsxbvg4Pe5AhDjEBXoYxOd8juphERm_7dF5O_0Qv3Th_VUgFAlHl4KJy4nJbD0IadOnj7pg/s842/8daIebeC.jpeg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Londrina Kelly", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkzWv4nXOr3vOIxrugZkzvaSGF3VeZoviqRuUN9hxGGmzYHLKsgqyg1qsY9VaV5AGjAI_6NZ761AO3_NUJar4cbPwBbB0UkAH0gobTXzRTMFC6V0NPU0Ffx7h9-RHSqEVMnjpwVWYJ2wD1PdTD-K89KtJQQjlQD6WzzJKpDDiwyAZPxS9FMF99DDjScvE/s1500/u2YatzoH.jpeg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Eliana Cravid", foto: "//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilY6MLUkb9cMxJPgQ_t0qMHpj7cEBBtmY_G49zunQLFCG1jtoLl17vr8HLzWwnrbQug9KfSanp-KktHUhpBFrnMLZwNKMN8eIx2GAt1_fP24RXljtetqDCgfA6hJelzii5oQvUZRBX_SFZKfRbD7xGgO0i8ZMR7qtG1DA0DJFWv02va69GsL0WRDm98q4/s960/1775939197667.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Letícia", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-l8wr-uBW7Yeto8HiJ5BpxEuzpgweGVL9oUqn943_KbtnYiqjyj2vpOq6hodAJE1Ms_rKLE4I23XA3YumSbx2E4AuUSJLG9fVFcxrRBF8dAQfXoWQGtnymhpvAJAhhWnkldgn8nCmrDq60h6ihtV6Jr2qDd0WxEEapTrQGOLj0YO4VfLx38Rdr-oCMlc/s1600/IMG-20260408-WA0012.jpg", video: "LINK_DO_VIDEO.mp4" },
+        { nome: "Fernanda", foto: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgh-f2YClKxRwoH47yx9ru6KR5t8ssGP80sSz2A6mEfMyXnWXYnzPhNXYdbfP9L8bVm1R9NMmu4IzCLq5BlMWbCC0vf-ivnQSGdwBXRcSaHcBhFwAzw0tHrFcIr6hU-lQDj8gcX7pvRAbIoVT7rsBB52IoQqa_COF5NxckBDWXUwAa5k82BQ3rr9T9rXmY/s1500/IMG-20260407-WA0032.jpg", video: "LINK_DO_VIDEO.mp4" }
     ];
 
     const chat = document.getElementById("chat");
@@ -156,7 +154,7 @@
     }
 
     function escolher(nome, fotoUrl, videoUrl){
-        addMessage(`Quero ver a pasta da <b>${nome}</b>! 🔥`, "user");
+        addMessage(`Quero ver o VIP da <b>${nome}</b>! 🔥`, "user");
 
         setTimeout(()=>{
             const msgBot = addMessage(`Excelente escolha! Veja uma prévia da <b>${nome}</b> abaixo:`, "bot");
@@ -193,10 +191,10 @@
             chat.scrollTop = chat.scrollHeight;
 
             setTimeout(()=>{
-                addMessage(`Gostou? Para ter acesso da pasta <b>COMPLETA</b>, pague 500 Kz via Express.`, "bot");
+                addMessage(`Gostou? Para libertar o acesso <b>COMPLETO</b>, pague 500 Kz via Express.`, "bot");
                 
                 const numero = "244957625206";
-                const textoWA = `Olá! Vi a prévia da *${nome}* e quero o acesso da pasta agora.`;
+                const textoWA = `Olá! Vi a prévia da *${nome}* e quero o acesso da Pasta agora.`;
                 document.getElementById("whatsappLink").href = `https://wa.me/${numero}?text=${encodeURIComponent(textoWA)}`;
                 document.getElementById("payment-area").style.display = "block";
                 
@@ -216,4 +214,4 @@
     });
 </script>
 </body>
-</html>
+</html>         
