@@ -223,7 +223,7 @@
     pacotes.forEach(p => {
         const btn = document.createElement("button");
         btn.className = "button-pacote";
-        btn.innerHTML = `<span>${p.nome}</span> <span class="price-tag">500 Kz</span>`;
+        btn.innerHTML = `<span>${p.nome}</span> <span class="price-tag">1000 Kz</span>`;
         btn.onclick = () => escolher(p.nome, p.foto, p.video);
         container.appendChild(btn);
     });
